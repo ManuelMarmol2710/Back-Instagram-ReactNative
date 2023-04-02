@@ -27,6 +27,7 @@ import { addFollow, getFollowersAndPost, deleteFollow, getFollows,countFollowing
 
 import { GetLike,addLikes,deleteLike,GetLikeOwner,countLikes, GetLikeFiltrar} from "../controllers/like.controller";
 import { sendEmail,  ObtenerQuienSigo, ObtenerQuienMeSigue,countFollowers } from "../controllers/sendemail.controller";
+import { addStoriesWithOwner, getFollowersAndStories,deleteStories, myStories } from "../controllers/stories.controller";
 import { requireAuth } from "../middleware/requireAuth";
 const router = Router();
 
@@ -70,7 +71,7 @@ router.get('/likeOwnerComments/:id_tweet', requireAuth,GetLikeComments);
 
 
 router.post('/follow/:owner/:following',requireAuth,addFollow);
-router.get('/follow/:owner',requireAuth, ObtenerQuienSigo);
+router.get('/follow/:owner',ObtenerQuienSigo);
 router.get('/Followerss/:following',requireAuth,ObtenerQuienMeSigue)
 router.get('/followers/:owner',requireAuth, getFollowersAndPost);
 router.get('/following/:owner/:following',requireAuth, getFollows)
@@ -78,6 +79,10 @@ router.get('/countFollowing/:owner',requireAuth,countFollowing)
 router.get('/countFollowers/:following',requireAuth,countFollowers)
 router.delete('/unfollow/:owner/:following',requireAuth, deleteFollow);
 
+router.post('/storie/:owner', addStoriesWithOwner);
+router.get('/storie/:owner', getFollowersAndStories);
+router.get('/mystorie/:owner', myStories);
+router.delete('/storie/:_id', deleteStories);
 
 
 

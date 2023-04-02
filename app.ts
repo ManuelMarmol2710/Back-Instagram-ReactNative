@@ -1,5 +1,5 @@
 import express from'express'
-import authRoutes from './routes/auth.routes'
+import authRoutes from './src/routes/auth.routes'
 import morgan from "morgan";
 import cors from "cors";
 const app = express()

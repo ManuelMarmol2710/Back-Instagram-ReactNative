@@ -28,9 +28,35 @@ const postSchema = new Schema(
     },
     url:{
       type: String
-    }
+    },
   
-  
+    url2:{
+      type: String
+    },
+    url3:{
+      type: String
+    },
+    url4:{
+      type: String
+    },
+    url5:{
+      type: String
+    },
+    url6:{
+      type: String
+    },
+    url7:{
+      type: String
+    },
+    url8:{
+      type: String
+    },
+    url9:{
+      type: String
+    },
+    url10:{
+      type: String
+    },
   },
   {
     versionKey: false,

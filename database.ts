@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import config from "./config/config";
+import config from "./src/config/config";
 
 mongoose.set("strictQuery", true);
 
