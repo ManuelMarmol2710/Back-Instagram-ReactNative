@@ -84,7 +84,14 @@ export const OrdenarPostPorFechasNuevas = async (
     return res.status(400).json({ msg: "post  no encontrado." });
   }
 };
-
+export const idPost = async (req: Request, res: Response) => {
+  const user = await Post.findById({ _id: req.params._id });
+  if (user) {
+    res.status(200).json(user);
+  } else {
+    return res.status(400).json({ msg: "post incorrecto." });
+  }
+};
 export const deletePost = async (req: Request, res: Response) => {
   const user = await Post.findByIdAndDelete({ _id: req.params._id });
   if (user) {

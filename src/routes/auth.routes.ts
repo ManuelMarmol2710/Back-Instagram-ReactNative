@@ -8,6 +8,7 @@ import {
   OrdenarPostPorFechasNuevas,
   countPost,
   OrdenarPostPorImagen,
+  idPost,
   
 
 } from "../controllers/post.controller";
@@ -38,7 +39,7 @@ router.put("/update/:email", requireAuth,updateUserByEmail);
 router.put("/updatepassword/:email",requireAuth, updatePassword);
 router.put("/updatebiography/:email",requireAuth, updateBiography);
 
-router.post('/sendEmail/:email',requireAuth,sendEmail );
+
 
 router.post("/post/:owner", addPostWithOwner);
 router.get("/post/:owner", PostByOwner);
@@ -47,6 +48,7 @@ router.get("/userSearch/:username",   TweetsByOwnerOne );
 router.get("/PostFilterForOld/:post",OrdenarPostPorFechas);
 router.get("/PostFilterForNew/:post", OrdenarPostPorFechasNuevas);
 router.get("/PostFilterImage/:url", OrdenarPostPorImagen);
+router.get('/idPost/:_id', idPost)
 router.delete('/deletePost/:_id',deletePost);
 router.get('/countPost/:owner', countPost);
 
