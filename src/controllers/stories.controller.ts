@@ -39,12 +39,8 @@ export const getFollowersAndStories = async (req: Request, res: Response)  =>  {
 
 export const myStories = async(req: Request, res: Response) => {
   const stories = await Stories.find({owner: req.params.owner})
-   console.log(stories.length);
-   if(stories.length === 0) {
-     
-    res.status(400).json({ msg: "Stories incorrecto." });
-
-
+ if(stories.length === 0) {
+       res.status(200).json('no');
  } else  {
         res.status(200).json(stories);
       } 

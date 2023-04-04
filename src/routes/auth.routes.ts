@@ -84,7 +84,7 @@ router.delete('/unfollow/:owner/:following',requireAuth, deleteFollow);
 router.post('/storie/:owner', addStoriesWithOwner);
 router.get('/storie/:owner', getFollowersAndStories);
 router.get('/mystorie/:owner', myStories);
-router.delete('/storie/:_id', deleteStories);
+router.delete('/deleteStorie/:_id', deleteStories);
 
 
 
