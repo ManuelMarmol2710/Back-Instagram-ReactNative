@@ -29,9 +29,6 @@ export const getFollows =async (req:Request,res:Response) => {
     } else {
       return res.status(400).json({ msg: "Titulo incorrecto." });
     }
-
-
-
 }
 
 export const getFollowersAndPost = async (req: Request, res: Response)  =>  {

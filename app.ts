@@ -5,7 +5,8 @@ import cors from "cors";
 import { Server } from 'socket.io';
 import {Server as SocketServer} from 'socket.io'
 import http from 'http'
-
+import chat from "./src/models/chat";
+import { Request, Response } from "express";
 const app = express();
 const server = http.createServer(app)
 const io = new SocketServer(server,{
@@ -16,10 +17,22 @@ const io = new SocketServer(server,{
 });
 app.use(morgan("dev"));
 io.on('connection', (socket)=> {
-  console.log(socket.id)
-socket.on('messages', (message)=>{
-  console.log(message)
-  socket.broadcast.emit('messages', message)
+console.log(socket.id)
+socket.on('messages', async (message)=>{
+socket.broadcast.emit('messages', message)
+console.log(message)
+   for (let i of message){
+ const newchat = new chat({
+    text: i.text,
+    chating: i.user._id,
+    user:{
+     _id:i.user._id, 
+    },
+    username: i.user.name,
+    createdAt:i.createdAt
+    });
+   await newchat.save();
+}
 })
 });
 app.use(express.json());

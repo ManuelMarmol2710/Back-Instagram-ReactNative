@@ -29,7 +29,9 @@ import { addFollow, getFollowersAndPost, deleteFollow, getFollows,countFollowing
 import { GetLike,addLikes,deleteLike,GetLikeOwner,countLikes, GetLikeFiltrar} from "../controllers/like.controller";
 import { sendEmail,  ObtenerQuienSigo, ObtenerQuienMeSigue,countFollowers } from "../controllers/sendemail.controller";
 import { addStoriesWithOwner, getFollowersAndStories,deleteStories, myStories } from "../controllers/stories.controller";
+import { getChating } from "../controllers/chats.controller";
 import { requireAuth } from "../middleware/requireAuth";
+
 const router = Router();
 
 router.post("/login",login);
@@ -86,11 +88,8 @@ router.get('/storie/:owner', getFollowersAndStories);
 router.get('/mystorie/:owner', myStories);
 router.delete('/deleteStorie/:_id', deleteStories);
 
-
-
-
-
-
+router.get('/chat/:username/:chating',getChating);
+router.get('/chatGet/:chating/:username',getChating);
 
 
 
