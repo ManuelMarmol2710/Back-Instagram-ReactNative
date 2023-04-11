@@ -9,6 +9,7 @@ export interface I_User extends Document {
   password: string;
   username: string;
   biography: string;
+  disable: boolean;
   comparePassword: (password: string) => Promise<boolean>;
 }
 
@@ -45,6 +46,10 @@ const userSchema = new Schema({
     type: String,
     require: true,
   },
+  disable: {
+    type: Boolean,
+    require: true,
+  }
 });
 
 userSchema.pre<I_User>("save", async function (next) {

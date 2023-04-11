@@ -3,7 +3,7 @@ import { model, Schema, Document } from "mongoose";
 export interface follow extends Document {
   following: string;
   owner: string;
-
+  disable: boolean;
 }
 
 const followSchema = new Schema(
@@ -16,10 +16,14 @@ const followSchema = new Schema(
       type: String,
       require: true,
     },
+ 
+   disable:{
+    type: Boolean,
+    require: true,
+   }
 
-  
   },
-  {
+{
     versionKey: false,
   }
 );
