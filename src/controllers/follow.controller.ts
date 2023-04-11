@@ -10,7 +10,7 @@ export const addFollow = async (
   const { following } = req.params;
   const newFollow = new follow({
     following,
-    disable: false,
+    disable: false
   });
 
   const saveFollow = await newFollow.save();

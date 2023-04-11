@@ -16,13 +16,14 @@ const followSchema = new Schema(
       type: String,
       require: true,
     },
-    disable:{
-      type: Boolean,
-      require: true,
-     }
-  
+ 
+   disable:{
+    type: Boolean,
+    require: true,
+   }
+
   },
-  {
+{
     versionKey: false,
   }
 );

@@ -75,7 +75,7 @@ if (req.body.password.length < 7){
   if (req.body.username.length <= 3){
     return res.status(400).json({ msg: "La contraseña mayor a 3 caracteres" });
     }
-
+ //  req.body.disable = false
   const user = await User.findOne({ email: req.body.email });
  const username = await User.findOne({username: req.body.username})
   console.log(user);
@@ -85,7 +85,6 @@ if (req.body.password.length < 7){
   if (username) {
     return res.status(400).json({ msg: "El usuario ya existe." });
   }
-  req.body.disable = false
   const newUser = new User(req.body);
   await newUser.save();
   return res.status(201).json(newUser);
