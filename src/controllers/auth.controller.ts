@@ -75,7 +75,7 @@ if (req.body.password.length < 7){
   if (req.body.username.length <= 3){
     return res.status(400).json({ msg: "La contraseña mayor a 3 caracteres" });
     }
-   req.body.disable = false
+
   const user = await User.findOne({ email: req.body.email });
  const username = await User.findOne({username: req.body.username})
   console.log(user);
@@ -160,4 +160,3 @@ export const TweetsByOwnerOne = async (req: Request, res: Response) => {
     return res.status(400).json({ msg: "Usuario incorrecto." });
   }
 };
-
