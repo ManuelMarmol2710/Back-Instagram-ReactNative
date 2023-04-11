@@ -3,13 +3,13 @@ import { model, Schema, Document } from "mongoose";
 import bcrypt from "bcrypt";
 
 export interface I_User extends Document {
+  disable: boolean;
   email: string;
   name: string;
   last_Name: string;
   password: string;
   username: string;
   biography: string;
-  disable: boolean;
   comparePassword: (password: string) => Promise<boolean>;
 }
 
