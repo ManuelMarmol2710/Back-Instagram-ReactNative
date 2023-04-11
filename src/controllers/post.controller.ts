@@ -13,6 +13,7 @@ export const addPostWithOwner = async (
   }
   const newPost = new Post({
     post,
+    disable: false,
     url,
     url2,
     url3,

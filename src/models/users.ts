@@ -3,6 +3,7 @@ import { model, Schema, Document } from "mongoose";
 import bcrypt from "bcrypt";
 
 export interface I_User extends Document {
+  disable: boolean;
   email: string;
   name: string;
   last_Name: string;
@@ -45,6 +46,10 @@ const userSchema = new Schema({
     type: String,
     require: true,
   },
+  disable: {
+    type: Boolean,
+    require: true,
+  }
 });
 
 userSchema.pre<I_User>("save", async function (next) {

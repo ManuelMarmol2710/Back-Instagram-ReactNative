@@ -85,6 +85,7 @@ if (req.body.password.length < 7){
   if (username) {
     return res.status(400).json({ msg: "El usuario ya existe." });
   }
+  req.body.disable = false
   const newUser = new User(req.body);
   await newUser.save();
   return res.status(201).json(newUser);

@@ -31,7 +31,7 @@ import { sendEmail,  ObtenerQuienSigo, ObtenerQuienMeSigue,countFollowers } from
 import { addStoriesWithOwner, getFollowersAndStories,deleteStories, myStories } from "../controllers/stories.controller";
 import { getChating } from "../controllers/chats.controller";
 import { requireAuth } from "../middleware/requireAuth";
-
+import { disable } from "../controllers/disable.controller";
 const router = Router();
 
 router.post("/login",login);
@@ -91,7 +91,7 @@ router.delete('/deleteStorie/:_id', deleteStories);
 router.get('/chat/:username/:chating',getChating);
 router.get('/chatGet/:chating/:username',getChating);
 
-
+router.put('/disable/:username/:owner',disable)
 
 
 
