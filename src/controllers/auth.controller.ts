@@ -10,13 +10,8 @@ export const login = async (req: Request, res: Response) => {
 const user = await User.findOne({ username: req.body.username});
   
 if (!user) {
-    return res.status(400).json({ msg: "Usuario  incorrectos." });
+    return res.status(400).json({ msg: "Usuario o contraseña incorrectos." });
   }
-const userEnable = await User.findOne({$and:[{username: req.body.username}, {disable:user.disable = true}]});
- // res.status(200).json( userEnable)
-if (userEnable) {
-    return res.status(400).json({ msg: "Usuario ELIMINADO." });
-}
   const isMatch = await user.comparePassword(req.body.password); 
  if (isMatch) {
 const token = jwt.sign(
