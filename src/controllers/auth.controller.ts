@@ -66,7 +66,7 @@ export const register = async (
 if(req.body.name.length <= 2) {
   return res.status(400).json({ msg: "El nombre debe tener al menos 3 caracteres." });
 }
-if(req.body.last_Name.length < 2){
+if(req.body.last_Name.length < 2) {
   return res.status(400).json({ msg: "El apellido debe tener al menos 3 caracteres." });
 }
 if (req.body.password.length < 7){
@@ -160,3 +160,4 @@ export const TweetsByOwnerOne = async (req: Request, res: Response) => {
     return res.status(400).json({ msg: "Usuario incorrecto." });
   }
 };
+

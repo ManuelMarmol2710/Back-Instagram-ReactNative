@@ -30,17 +30,16 @@ import { GetLike,addLikes,deleteLike,GetLikeOwner,countLikes, GetLikeFiltrar} fr
 import { sendEmail,  ObtenerQuienSigo, ObtenerQuienMeSigue,countFollowers } from "../controllers/sendemail.controller";
 import { addStoriesWithOwner, getFollowersAndStories,deleteStories, myStories } from "../controllers/stories.controller";
 import { getChating } from "../controllers/chats.controller";
-import { disable } from "../controllers/disable.controller";
 import { requireAuth } from "../middleware/requireAuth";
 
 const router = Router();
 
 router.post("/login",login);
 router.post("/register", register);
-router.get("/profile",  profile);
-router.put("/update/:email", updateUserByEmail);
-router.put("/updatepassword/:email", updatePassword);
-router.put("/updatebiography/:email", updateBiography);
+router.get("/profile", requireAuth, profile);
+router.put("/update/:email", requireAuth,updateUserByEmail);
+router.put("/updatepassword/:email",requireAuth, updatePassword);
+router.put("/updatebiography/:email",requireAuth, updateBiography);
 
 
 
@@ -57,32 +56,32 @@ router.get('/countPost/:owner', countPost);
 
 
 router.post('/like/:id_tweet/:owner', addLikes);
-router.get('/like/:owner/:id_tweet', GetLike);
-router.delete('/notlike/:owner/:id_tweet', deleteLike);
-router.get('/likeOwner/:id_tweet', GetLikeOwner);
-router.get('/countLike/:id_tweet',countLikes)
-router.get('/likeFiltrarfol',GetLikeFiltrar)
+router.get('/like/:owner/:id_tweet', requireAuth,GetLike);
+router.delete('/notlike/:owner/:id_tweet',requireAuth, deleteLike);
+router.get('/likeOwner/:id_tweet', requireAuth,GetLikeOwner);
+router.get('/countLike/:id_tweet',requireAuth,countLikes)
+router.get('/likeFiltrarfol',requireAuth,GetLikeFiltrar)
 
-router.post('/comment/:id_tweet/:owner',addCommentWithOwner)
-router.get('/comment/:id_tweet', commentsByid)
-router.put('/updateComment/:_id', updateComments)
-router.delete('/deleteComment/:_id', deleteComment);
-router.get('/countLikeCo/:id_tweet',countLikesCo)
+router.post('/comment/:id_tweet/:owner',requireAuth,addCommentWithOwner)
+router.get('/comment/:id_tweet', requireAuth,commentsByid)
+router.put('/updateComment/:_id', requireAuth,updateComments)
+router.delete('/deleteComment/:_id',requireAuth, deleteComment);
+router.get('/countLikeCo/:id_tweet',requireAuth,countLikesCo)
 
-router.post('/likeComment/:id_tweet/:owner', addLikeComment);
-router.get('/likeComment/:owner/:id_tweet', GetLikeComment);
-router.delete('/notlikeComment/:owner/:id_tweet', dislikeComment);
-router.get('/likeOwnerComments/:id_tweet', GetLikeComments);
+router.post('/likeComment/:id_tweet/:owner', requireAuth,addLikeComment);
+router.get('/likeComment/:owner/:id_tweet',requireAuth, GetLikeComment);
+router.delete('/notlikeComment/:owner/:id_tweet', requireAuth,dislikeComment);
+router.get('/likeOwnerComments/:id_tweet', requireAuth,GetLikeComments);
 
 
-router.post('/follow/:owner/:following',addFollow);
+router.post('/follow/:owner/:following',requireAuth,addFollow);
 router.get('/follow/:owner',ObtenerQuienSigo);
-router.get('/Followerss/:following',ObtenerQuienMeSigue)
-router.get('/followers/:owner', getFollowersAndPost);
-router.get('/following/:owner/:following', getFollows)
-router.get('/countFollowing/:owner',countFollowing)
-router.get('/countFollowers/:following',countFollowers)
-router.delete('/unfollow/:owner/:following', deleteFollow);
+router.get('/Followerss/:following',requireAuth,ObtenerQuienMeSigue)
+router.get('/followers/:owner',requireAuth, getFollowersAndPost);
+router.get('/following/:owner/:following',requireAuth, getFollows)
+router.get('/countFollowing/:owner',requireAuth,countFollowing)
+router.get('/countFollowers/:following',requireAuth,countFollowers)
+router.delete('/unfollow/:owner/:following',requireAuth, deleteFollow);
 
 router.post('/storie/:owner', addStoriesWithOwner);
 router.get('/storie/:owner', getFollowersAndStories);
@@ -90,9 +89,7 @@ router.get('/mystorie/:owner', myStories);
 router.delete('/deleteStorie/:_id', deleteStories);
 
 router.get('/chat/:username/:chating',getChating);
-
-router.put('/disable/:username/:owner',disable)
-
+router.get('/chatGet/:chating/:username',getChating);
 
 
 

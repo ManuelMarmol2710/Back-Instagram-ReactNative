@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import Post from "../models/post";
+import User from "../models/users";
 export const addPostWithOwner = async (
   req: Request,
   res: Response
@@ -22,7 +23,6 @@ export const addPostWithOwner = async (
     url8,
     url9,
     url10,
-    disable: false,
   });
 
   const savePost = await newPost.save();

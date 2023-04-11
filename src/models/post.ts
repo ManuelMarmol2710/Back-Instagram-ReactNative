@@ -4,7 +4,7 @@ export interface post extends Document {
   posts: string;
   owner: string;
   url:string;
-  disable: boolean;
+
 }
 
 const postSchema = new Schema(
@@ -26,10 +26,6 @@ const postSchema = new Schema(
       default: Date.now(),
        require: true,
     },
-    disable:{
-      type: Boolean,
-      require: true,
-     },
     url:{
       type: String
     },
