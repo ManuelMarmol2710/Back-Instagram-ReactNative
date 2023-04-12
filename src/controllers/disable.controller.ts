@@ -4,8 +4,6 @@ import follow from "../models/follow";
 import Post from "../models/post";
 export const disable = async (req: Request, res: Response) => {
   const { username, owner , following } = req.params;
-
-  
  await User.findOneAndUpdate(
     { username: username },
     {

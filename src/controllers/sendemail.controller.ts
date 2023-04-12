@@ -37,13 +37,14 @@ export const sendEmail = async (req: Request, res: Response) => {
   res.status(200).json(info);
 };
 
+
 export const ObtenerQuienSigo = async (req: Request, res: Response) => {
-  const owner = await follow.find({owner: req.params.owner}) 
+  const owner = await follow.find({$and:[{owner: req.params.owner},{disable: 'false'}]}) 
   res.status(200).json(owner)
 };
 
 export const ObtenerQuienMeSigue = async (req: Request, res: Response) => {
-  const owner = await follow.find({following: req.params.following}) 
+  const owner = await follow.find({$and:[{following: req.params.following},{disable:'false'}]}) 
   res.status(200).json(owner)
 };
 export const countFollowers = async (req: Request, res: Response) => {
