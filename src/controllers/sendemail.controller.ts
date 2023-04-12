@@ -48,7 +48,7 @@ export const ObtenerQuienMeSigue = async (req: Request, res: Response) => {
   res.status(200).json(owner)
 };
 export const countFollowers = async (req: Request, res: Response) => {
-  const replies = await follow.countDocuments({following: req.params.following})
+  const replies = await follow.countDocuments({$and:[{following: req.params.following},{disable:'false'}]})
   return res.status(200).json(replies);
     
   }

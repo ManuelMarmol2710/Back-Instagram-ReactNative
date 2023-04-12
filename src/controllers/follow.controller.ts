@@ -62,7 +62,7 @@ export const deleteFollow = async (req: Request, res: Response) => {
  };
 
  export const countFollowing = async (req: Request, res: Response) => {
-  const replies = await follow.countDocuments({owner: req.params.owner})
+  const replies = await follow.countDocuments({$and:[{owner: req.params.owner},{disable: 'false'}]})
   return res.status(200).json(replies);
     
   }
