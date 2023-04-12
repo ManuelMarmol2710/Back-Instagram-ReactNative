@@ -46,7 +46,7 @@ PostFollowing.push(temp)
 
 }
 if(followers.length === 0){
-  res.status(400).json('no')
+  res.status(200).json('no')
 } else {
 
   res.status(200).json(followers)
