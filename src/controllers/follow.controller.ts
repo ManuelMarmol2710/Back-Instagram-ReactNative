@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { Types } from "mongoose";
 import follow from "../models/follow";
 import Post, { post } from "../models/post";
+import stories from "../models/stories";
 
 export const addFollow = async (
   req: Request,
@@ -44,7 +45,13 @@ PostFollowing.push(temp)
  PostFollowing.forEach((contenido) => contenido.forEach((dentro) => followers.push(dentro)));
 
 }
-res.status(200).json(followers)
+if(followers.length === 0){
+  res.status(400).json('no')
+} else {
+
+  res.status(200).json(followers)
+}
+
 };
 
 
